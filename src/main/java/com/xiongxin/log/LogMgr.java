@@ -4,6 +4,8 @@ import com.xiongxin.file.BlockId;
 import com.xiongxin.file.FileMgr;
 import com.xiongxin.file.Page;
 
+import java.util.Iterator;
+
 public class LogMgr {
 
     private FileMgr fm;
@@ -37,6 +39,12 @@ public class LogMgr {
     public void flush(int lsn) {
         if (lsn >= lastSavedLSN)
             flush();
+    }
+
+    public Iterator<byte[]> iterator() {
+        flush();
+
+        return new LogIterator(fm, currentblk);
     }
 
     /**

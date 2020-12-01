@@ -57,6 +57,12 @@ public class FileMgr {
         }
     }
 
+    /**
+     * 添加新的文件块
+     *
+     * @param filename
+     * @return
+     */
     public synchronized BlockId append(String filename) {
         var newblknum = length(filename);
         var blk = new BlockId(filename, newblknum);

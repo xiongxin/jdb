@@ -20,7 +20,7 @@ public class Page {
     }
 
     public int getInt(int offset) {
-        return bb.get(offset);
+        return bb.getInt(offset);
     }
 
     public void setInt(int offset, int n) {
