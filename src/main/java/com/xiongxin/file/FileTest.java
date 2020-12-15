@@ -12,8 +12,13 @@ public class FileTest {
         var p1 = new Page(fileMgr.blockSize());
         p1.setString(pos1, "abcdefghijklm");
         int size = Page.maxLength("abcdefghijklm".length());
-        int post2 = pos1 + size;
-        p1.setInt(post2, 345);
+        int pos2 = pos1 + size;
+        p1.setInt(pos2, 345);
         fileMgr.write(blk, p1);
+
+        Page p2 = new Page(fileMgr.blockSize());
+        fileMgr.read(blk, p2);
+        System.out.println("offset " + pos2 + " contains " + p2.getInt(pos2));
+        System.out.println("offset " + pos1 + " contains " + p2.getString(pos1));
     }
 }

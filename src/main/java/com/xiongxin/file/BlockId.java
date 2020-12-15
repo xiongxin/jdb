@@ -5,7 +5,7 @@ public record BlockId(String filename, int blknum) {
     @Override
     public boolean equals(Object obj) {
         var blk = (BlockId) obj;
-        return filename.equals(blk.filename);
+        return filename.equals(blk.filename) && blknum == blk.blknum;
     }
 
     @Override
